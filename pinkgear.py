@@ -1,12 +1,29 @@
 import math
+import sys
 
 z1 = round((int(input("z шестерни:",))),3)
 z2 = round((int(input("z колеса:",))),3)
 mte = round((float(input("mte:",))),3)
+if 0 <= mte <= 2.5:
+    print("боковой зазор (С) равен 0.1")
+elif 2.6 <= mte <= 4:
+    print("боковой зазор (С) равен 1.5") 
+elif 4.1 <= mte <= 6:
+    print("боковой зазор (С) равен 0.2")
+elif 6.1 <= mte <= 8:
+    print("боковой зазор (С) равен 0.25")
+elif 8.1 <= mte <= 12:
+    print("боковой зазор (С) равен 0.4")
+elif 12.1 <= mte <= 15:
+    print("боковой зазор (С) равен 0.5")
+else:
+    print("боковой зазор (С) на усмотрение конструктора")
+    
 mn = round((float(input("mn:",))),3)
 b = round((float(input("b:",))),3)
 alpha = 20 #tg20
 alpharadians = math.radians(alpha)
+
 tgalpharadians = round(math.tan(alpharadians),4)
 beta = 35 #tg35
 betaradians = math.radians(beta)
@@ -16,9 +33,34 @@ ru = d0/2
 zc = round((math.sqrt(z1**2 + z2**2)),6)
 print("zc:",zc)
 Re = mte * (zc / 2)
+
 R = Re - (b / 2)
 
 Bm = int(input("средний угол наклона спирали(Bn):",))
+
+if 30 <= Bm <= 40:
+    if 0 <= Re <= 40 or 0 <= b <= 20:
+        print("рекомендуемое (do) 60 или 80 ")
+    elif 40 <= Re <= 60 or 21 <= b <= 30:
+        print("рекомендуемое (do) 100 или 125 ")
+    elif 61 <= Re <= 80 or 31 <= b <= 38:
+        print("рекомендуемое (do) 125 или 160 (6 дюймов)")
+    elif 81 <= Re <= 100 or 39 <= b <= 50:
+        print("рекомендуемое (do) 160 или 200 (7.5 дюймов)")
+    elif 101 <= Re <= 130 or 51 <= b <= 65:
+        print("рекомендуемое (do) 200 или 250 (9 дюймов)")
+    elif 131 <= Re <= 190 or 66 <= b <= 100:
+        print("рекомендуемое (do) 250 или 315 (12 дюймов)")
+    elif 191 <= Re <= 380 or 101 <= b <= 125:
+        print("рекомендуемое (do) 315 или 400 (18 дюймов)")
+    else:
+        print("рекомендуемое (do) 400 или 500 (18 дюймов)")
+else:
+    if 0 <= Bm or Bm >41:
+        print("(Bn) Не рекомендуемый параметр по фрезе", file=sys.stderr)
+    
+
+    
 cosBm = round(math.cos(math.radians(Bm)),5)
 sinBm = round(math.sin(math.radians(Bm)),4)
 
@@ -88,9 +130,12 @@ h = round((hm + (b * tgQf2)), 3)
 print("h высота у большого модуля:",h)
                
 zi = int(input("введите число не кратное ни колесу ни шестерне от 7 до 17:",))
+
 idsh = round((2 * (zi / z1)),6)
 idk = round((2 * (zi / z2)),6)
+
 print("гитара деления для шестерни", idsh)
+"""
 for gear_1 in range(34, 91):
     for gear_2 in range(34, 91):
         variant_2gears = gear_1 / gear_2
@@ -114,8 +159,9 @@ for gear_1 in range(34, 91):
                         print(gear_3, "*", gear_4,)
                         print()
                         
-         
+"""         
 print("гитара деления для колеса",idk)
+"""
 for gear_1 in range(34, 91):
     for gear_2 in range(34, 91):
         variant_2gears = gear_1 / gear_2
@@ -138,10 +184,10 @@ for gear_1 in range(34, 91):
                         print("--    --", "=", variant_4gears)
                         print(gear_3, "*", gear_4,)
                         print()
-
+"""
 i_exemple_0 = round((3.5 * (zi/zc)),6)
 print("обкат для колеса:", i_exemple_0)
-
+"""
 
 
 for gear_1 in range(34, 91):
@@ -166,10 +212,10 @@ for gear_1 in range(34, 91):
                         print(gear_3, "*", gear_4,)
                         print()
 
-
+"""
 i_exemple_1 = round(((3.5 * zi)/(zc - 0.25)),6)
 print("обкат для выпуклой:", i_exemple_1)
-
+"""
 for gear_1 in range(34, 91):
     for gear_2 in range(34, 91):
         variant_2gears = gear_1 / gear_2
@@ -192,9 +238,11 @@ for gear_1 in range(34, 91):
                         print(gear_3, "*", gear_4,)
                         print()
 
+"""
 i_exemple_2 = round(((3.5 * zi)/(zc + 0.2)),6)
 print("обкат для вогнутой:", i_exemple_2)
 
+"""
 for gear_1 in range(34, 91):
     for gear_2 in range(34, 91):
         variant_2gears = gear_1 / gear_2
@@ -216,6 +264,6 @@ for gear_1 in range(34, 91):
                         print("--   --", "=", variant_4gears)
                         print(gear_3, "*", gear_4,)
                         print()                        
-
+"""
     
 input("Нажмите для выхода...")
