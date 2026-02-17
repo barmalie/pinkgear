@@ -81,6 +81,7 @@ sin_e02 = empty11
 degrees_sin_e0 = math.asin(sin_e02)
 degrees_sin_e0_1 = round(math.degrees(degrees_sin_e0),6)
 degrees_sin_e0_2 = degrees_sin_e0_1 * 2
+#!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 degrees_sin_e0_3 = math.floor(degrees_sin_e0_2)
 degrees_sin_e0_4 = round((((degrees_sin_e0_2 - degrees_sin_e0_3)/100*60) + degrees_sin_e0_3),2)
 print("e0:", degrees_sin_e0_4)
@@ -108,8 +109,10 @@ N0 = round(((deltacons/20) * sinBm),3)
 print("номер резца ",N0)
 
 Nf = math.ceil((deltacons/20) * sinBm)
-        
-print("номер резца рекомендуемый:",Nf)
+if Nf >= 12:
+    print("номер резца рекомендуемый: 12")
+else:    
+    print("номер резца рекомендуемый:",Nf)
                
 sinBm1 = round(((20*Nf)/deltacons),6)
 Bm1 = math.asin(sinBm1)
