@@ -134,9 +134,37 @@ print("h высота у большого модуля:",h)
                
 zi = int(input("введите число не кратное ни колесу ни шестерне от 7 до 17:",))
 
-idsh = round((2 * (zi / z1)),6)
-idk = round((2 * (zi / z2)),6)
+model_machine = str(input("введите модель станка:",))
 
+if model_machine == '525' or '528С' or '5А872':
+    idsh = round((2 * (zi / z1)),6)
+    idk = round((2 * (zi / z2)),6)
+    i_exemple_0 = round((3.5 * (zi/zc)),6)
+elif model_machine == '5С270П':
+    idsh = round((15 / z1),6)
+    idk = round((15 / z2),6)
+    i_exemple_0 = round((30/zc),6)
+elif model_machine == '5С280П':
+    idsh = round((24 / z1),6)
+    idk = round((24 / z2),6)
+    i_exemple_0 = round((zc / 36),6)
+elif model_machine == '5С26В':
+    idsh = round((7.5 / z1),6)
+    idk = round((7.5 / z2),6)
+    i_exemple_0 = round((15 / zc),6)
+elif model_machine == '5А870В' or '5А872В':
+    idsh = round((30 / z1),6)
+    idk = round((30 / z2),6)
+    i_exemple_0 = round((zc / 60),6)
+elif model_machine == '5П23А' or '5С23П':
+    idsh = round((3 * (zi / z1)),6)
+    idk = round((3 * (zi / z2)),6)
+    i_exemple_0 = round((zc / 60),6)
+else:
+    print("Проверьте раскладку")
+
+
+print("обкат для колеса:", i_exemple_0)
 print("гитара деления для шестерни", idsh)
 """
 for gear_1 in range(34, 91):
@@ -188,8 +216,8 @@ for gear_1 in range(34, 91):
                         print(gear_3, "*", gear_4,)
                         print()
 """
-i_exemple_0 = round((3.5 * (zi/zc)),6)
 print("обкат для колеса:", i_exemple_0)
+
 """
 
 
